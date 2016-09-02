@@ -46,6 +46,7 @@ public class ConfigurationsTest {
         config.put("two", "cfg-two");
         config.put("THREE", "3");
         config.put("FOUR", "true");
+        config.put("SIX", "SIX");
         
         ConfigOne cfg = Configurations.get(new MapConfigurationResolver(config), ConfigOne.class);
         
@@ -54,6 +55,7 @@ public class ConfigurationsTest {
         assertEquals(3, cfg.intValue);
         assertTrue(cfg.boolValue);
         assertEquals("default", cfg.defaultValue);
+        assertEquals(EnumSetting.SIX, cfg.enumSetting);
         assertEquals("without", cfg.withoutConfiguration);
     }
     
@@ -74,8 +76,15 @@ public class ConfigurationsTest {
         @Configuration("FIVE")
         private String defaultValue = "default";
         
+        @Configuration("SIX")
+        private EnumSetting enumSetting;
+        
         private String withoutConfiguration = "without";
         
+    }
+    
+    public static enum EnumSetting {
+        ONE, TWO, THREE, FOUR, FIVE, SIX;
     }
 
 }
