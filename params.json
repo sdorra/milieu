@@ -1,0 +1,6 @@
+{
+  "name": "Milieu",
+  "tagline": "Small annotation based configuration library",
+  "body": "# milieu\r\nSmall annotation based configuration library\r\n\r\n## Usage\r\nAnnotate your configuration classes with the `Configuration` annotation.\r\n\r\n```java\r\npublic class DatabaseConfiguration {\r\n\r\n    @Configuration(\"DB_URL\")\r\n    private String jdbcUrl;\r\n    \r\n    @Configuration(\"DB_USERNAME\")\r\n    private String username;\r\n    \r\n    @Configuration(\"DB_PASSWORD\")\r\n    private String password; \r\n}\r\n```\r\nLoad your configuration with `Configurations`. The following example will use the default `ConfigurationResolver`, which loads the configuration from the process environment.\r\n\r\n```java\r\nDatabaseConfiguration databaseCfg = Configurations.get(DatabaseConfiguration.class);\r\n```\r\nTo configure your application you only have to set the specific environment variables, before you start your application.\r\n```bash\r\nexport DB_URL=\"jdbc:mysql://localhost:3306/milieu\"\r\nexport DB_USERNAME=\"milieu\"\r\nexport DB_PASSWORD=\"secret\"\r\n# start your application\r\n```\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
